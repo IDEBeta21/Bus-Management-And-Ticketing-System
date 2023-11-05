@@ -854,16 +854,14 @@ Public Class frmEmployee
 
     Private Sub btnClearPendingSeats_Click(sender As Object, e As EventArgs) Handles btnClearPendingSeats.Click
 
-        Dim b() As Button
-        b = {btnSeatNumber1, btnSeatNumber2, btnSeatNumber3, btnSeatNumber4, btnSeatNumber5, btnSeatNumber6, btnSeatNumber7, btnSeatNumber8, btnSeatNumber9, btnSeatNumber10, btnSeatNumber11, btnSeatNumber12, btnSeatNumber13, btnSeatNumber14, btnSeatNumber15, btnSeatNumber16, btnSeatNumber17, btnSeatNumber18, btnSeatNumber19, btnSeatNumber20, btnSeatNumber21, btnSeatNumber22, btnSeatNumber23, btnSeatNumber24, btnSeatNumber25, btnSeatNumber26, btnSeatNumber27, btnSeatNumber28, btnSeatNumber29, btnSeatNumber30, btnSeatNumber31, btnSeatNumber32, btnSeatNumber33, btnSeatNumber34, btnSeatNumber35, btnSeatNumber36, btnSeatNumber37, btnSeatNumber38, btnSeatNumber39, btnSeatNumber40, btnSeatNumber41, btnSeatNumber42, btnSeatNumber43, btnSeatNumber44, btnSeatNumber45, btnSeatNumber46, btnSeatNumber47, btnSeatNumber48, btnSeatNumber49, btnSeatNumber50, btnSeatNumber51, btnSeatNumber52, btnSeatNumber53, btnSeatNumber54, btnSeatNumber55, btnSeatNumber56, btnSeatNumber57, btnSeatNumber58, btnSeatNumber59, btnSeatNumber60, btnSeatNumber61}
+        Dim buttonList() As Button
+        buttonList = {btnSeatNumber1, btnSeatNumber2, btnSeatNumber3, btnSeatNumber4, btnSeatNumber5, btnSeatNumber6, btnSeatNumber7, btnSeatNumber8, btnSeatNumber9, btnSeatNumber10, btnSeatNumber11, btnSeatNumber12, btnSeatNumber13, btnSeatNumber14, btnSeatNumber15, btnSeatNumber16, btnSeatNumber17, btnSeatNumber18, btnSeatNumber19, btnSeatNumber20, btnSeatNumber21, btnSeatNumber22, btnSeatNumber23, btnSeatNumber24, btnSeatNumber25, btnSeatNumber26, btnSeatNumber27, btnSeatNumber28, btnSeatNumber29, btnSeatNumber30, btnSeatNumber31, btnSeatNumber32, btnSeatNumber33, btnSeatNumber34, btnSeatNumber35, btnSeatNumber36, btnSeatNumber37, btnSeatNumber38, btnSeatNumber39, btnSeatNumber40, btnSeatNumber41, btnSeatNumber42, btnSeatNumber43, btnSeatNumber44, btnSeatNumber45, btnSeatNumber46, btnSeatNumber47, btnSeatNumber48, btnSeatNumber49, btnSeatNumber50, btnSeatNumber51, btnSeatNumber52, btnSeatNumber53, btnSeatNumber54, btnSeatNumber55, btnSeatNumber56, btnSeatNumber57, btnSeatNumber58, btnSeatNumber59, btnSeatNumber60, btnSeatNumber61}
 
-        For aaa = 0 To 60
-
-            If b(aaa).BackColor = Color.FromArgb(139, 0, 0) Then
-                b(aaa).BackColor = Color.FromArgb(240, 240, 240)
-                b(aaa).ForeColor = Color.Black
+        For Each b As Button In buttonList
+            If b.BackColor = Color.FromArgb(139, 0, 0) Then
+                b.BackColor = Color.FromArgb(240, 240, 240)
+                b.ForeColor = Color.Black
             End If
-
         Next
 
         txtPrice.Text = ""
