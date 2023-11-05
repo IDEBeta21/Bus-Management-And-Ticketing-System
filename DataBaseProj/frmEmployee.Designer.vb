@@ -303,7 +303,7 @@ Partial Class frmEmployee
         'rtbTicketDisplay
         '
         Me.rtbTicketDisplay.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.rtbTicketDisplay.Font = New System.Drawing.Font("Mirella Personal Use", 26.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.rtbTicketDisplay.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.rtbTicketDisplay.Location = New System.Drawing.Point(943, 36)
         Me.rtbTicketDisplay.Name = "rtbTicketDisplay"
         Me.rtbTicketDisplay.ReadOnly = True
@@ -421,7 +421,7 @@ Partial Class frmEmployee
         Me.cmbPassengerType.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.cmbPassengerType.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbPassengerType.FormattingEnabled = True
-        Me.cmbPassengerType.Items.AddRange(New Object() {"PWD", "SENIOR CITIZEN", "STUDENT"})
+        Me.cmbPassengerType.Items.AddRange(New Object() {"STANDARD", "PWD", "SENIOR CITIZEN", "STUDENT"})
         Me.cmbPassengerType.Location = New System.Drawing.Point(140, 103)
         Me.cmbPassengerType.Name = "cmbPassengerType"
         Me.cmbPassengerType.Size = New System.Drawing.Size(233, 28)

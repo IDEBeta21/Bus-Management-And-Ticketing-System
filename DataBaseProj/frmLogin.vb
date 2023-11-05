@@ -13,11 +13,7 @@ Public Class frmLogin
 
     End Sub
 
-
-
-    ''btnLogin Method
-    Private Sub btnLogin_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
-
+    Public Sub login()
         Try
             con.Open()
             'testing if the password is correct or not (by knowing if the record exist or not)
@@ -29,11 +25,11 @@ Public Class frmLogin
             Dim timeStr As String = DateTime.Now.ToString("HH:mm:ss tt") 'getting the current date and time
             Dim dateStr As String = DateTime.Now.ToString("MM/dd/yyyy")
 
-            Dim toHistoryRec As New OleDbCommand("INSERT INTO LoginHistory VALUES('" & letsRead.GetValue(0).ToString & _
-                                                 "','" & letsRead.GetValue(1).ToString & _
-                                                 "','" & letsRead.GetValue(2).ToString & _
-                                                 "','" & letsRead.GetValue(3).ToString & _
-                                                 "','" & dateStr.ToString & _
+            Dim toHistoryRec As New OleDbCommand("INSERT INTO LoginHistory VALUES('" & letsRead.GetValue(0).ToString &
+                                                 "','" & letsRead.GetValue(1).ToString &
+                                                 "','" & letsRead.GetValue(2).ToString &
+                                                 "','" & letsRead.GetValue(3).ToString &
+                                                 "','" & dateStr.ToString &
                                                  "','" & timeStr.ToString & "','','')", con)
             toHistoryRec.ExecuteNonQuery()
 
@@ -82,12 +78,17 @@ Public Class frmLogin
         Catch ex As Exception
 
             MessageBox.Show("Log In Not Succeed")
-            MessageBox.Show(ex.ToString)
+            'MessageBox.Show(ex.ToString)
+            Console.WriteLine(ex.ToString)
             con.Close()
 
         End Try
+    End Sub
 
+    ''btnLogin Method
+    Private Sub btnLogin_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
 
+        login()
 
     End Sub
 
@@ -114,8 +115,8 @@ Public Class frmLogin
         lblExit.ForeColor = Color.Black
     End Sub
 
-    
-    
+
+
     Private Sub lblCreateAcc_Click(sender As Object, e As EventArgs) Handles lblCreateAcc.Click
         pnlCreateAcc.Enabled = True
         pnlCreateAcc.Visible = True
@@ -135,7 +136,7 @@ Public Class frmLogin
         txtUserName.Focus()
     End Sub
 
-    
+
     Private Sub btnCreateAcc_Click(sender As Object, e As EventArgs) Handles btnCreateAcc.Click
 
         con.Close()
@@ -144,9 +145,9 @@ Public Class frmLogin
             Dim employeeJob, empID As String
 
             ''getting employeejob form database
-            Dim getDataFromEmployeeTable As New OleDbCommand("SELECT EmployeeJob , ID FROM EmployeeData WHERE ID = " & Val(txtCreateUserID.Text) & _
-                                                             " AND EmployeeName = '" & txtCreateEmployeeName.Text.ToString & _
-                                                             "' AND EmployeeAddress = '" & txtCreateAddress.Text.ToString & _
+            Dim getDataFromEmployeeTable As New OleDbCommand("SELECT EmployeeJob , ID FROM EmployeeData WHERE ID = " & Val(txtCreateUserID.Text) &
+                                                             " AND EmployeeName = '" & txtCreateEmployeeName.Text.ToString &
+                                                             "' AND EmployeeAddress = '" & txtCreateAddress.Text.ToString &
                                                              "' AND EmployeePhoneNumber = '" & txtCreatePhoneNum.Text.ToString & "'", con)
 
             Dim readData As OleDbDataReader = getDataFromEmployeeTable.ExecuteReader()
@@ -174,10 +175,10 @@ Public Class frmLogin
 
                         If readData.Read = False Then
 
-                            Dim saveNewAcc As New OleDbCommand("INSERT INTO LoginData(UserName, UserPassword, UserJob, LoginUserID, LoginUserName) VALUES('" & txtCreateUserName.Text.ToString & _
-                                                           "' , '" & txtCreateUserPass.Text.ToString & _
-                                                           "' , '" & employeeJob & _
-                                                           "' , 'EMP - " & txtCreateUserID.Text.ToString & _
+                            Dim saveNewAcc As New OleDbCommand("INSERT INTO LoginData(UserName, UserPassword, UserJob, LoginUserID, LoginUserName) VALUES('" & txtCreateUserName.Text.ToString &
+                                                           "' , '" & txtCreateUserPass.Text.ToString &
+                                                           "' , '" & employeeJob &
+                                                           "' , 'EMP - " & txtCreateUserID.Text.ToString &
                                                            "' , '" & txtCreateEmployeeName.Text.ToString & "')", con)
 
                             saveNewAcc.ExecuteNonQuery()
@@ -208,8 +209,8 @@ Public Class frmLogin
             End If
         Catch ex As Exception
 
-            MessageBox.Show("Cant find datas in data base " & vbNewLine & _
-                            " - Make sure that the information inputed is correct" & vbNewLine & _
+            MessageBox.Show("Cant find datas in data base " & vbNewLine &
+                            " - Make sure that the information inputed is correct" & vbNewLine &
                             " - Data might not be in the database")
             con.Close()
 
@@ -221,5 +222,11 @@ Public Class frmLogin
 
         Me.Close()
 
+    End Sub
+
+    Private Sub txtUserInput_KeyDown(sender As Object, e As KeyEventArgs) Handles txtUserPass.KeyDown, txtUserName.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            login()
+        End If
     End Sub
 End Class
